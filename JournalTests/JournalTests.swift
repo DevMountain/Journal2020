@@ -29,7 +29,7 @@ class JournalTests: XCTestCase {
         controller.entries = []
         
         // MARK: Part 3
-//        controller.saveToPersistentStorage()
+        controller.saveToPersistentStorage()
     }
     
     // MARK: Part 1
@@ -71,25 +71,25 @@ class JournalTests: XCTestCase {
     
     // MARK: Part 3
     
-//    func testEntryPersistence() {
-//        let controller = EntryController.sharedController
-//        
-//        let testEntry = Entry(title: "Test Title", text: "Lorem ipsum doler init")
-//        
-//        controller.addEntry(testEntry)
-//        
-//        XCTAssert(controller.entries.contains(testEntry), "Entry object not added to EntryController's entries array.")
-//        
-//        controller.entries = []
-//        
-//        controller.loadFromPersistentStorage()
-//        
-//        if let restoredEntry = controller.entries.last {
-//            
-//            XCTAssert(restoredEntry.title == testEntry.title && restoredEntry.text == testEntry.text, "Entry object unsuccessfully loaded from NSUserDefaults.")
-//        }
-//        
-//        controller.removeEntry(testEntry)
-//    }
+    func testEntryPersistence() {
+        let controller = EntryController.sharedController
+        
+        let testEntry = Entry(title: "Test Title", text: "Lorem ipsum doler init")
+        
+        controller.addEntry(testEntry)
+        
+        XCTAssert(controller.entries.contains(testEntry), "Entry object not added to EntryController's entries array.")
+        
+        controller.entries = []
+        
+        controller.loadFromPersistentStorage()
+        
+        if let restoredEntry = controller.entries.last {
+            
+            XCTAssert(restoredEntry.title == testEntry.title && restoredEntry.text == testEntry.text, "Entry object unsuccessfully loaded from NSUserDefaults.")
+        }
+        
+        controller.removeEntry(testEntry)
+    }
     
 }
