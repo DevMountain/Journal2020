@@ -54,17 +54,11 @@ class EntryListTableViewController: UITableViewController {
 
         if segue.identifier == "toShowEntry" {
             
-            if let detailViewController = segue.destinationViewController as? EntryDetailViewController {
+            if let detailViewController = segue.destinationViewController as? EntryDetailViewController,
+                let selectedIndex = tableView.indexPathForSelectedRow?.row {
                 
-                // Following line forces the view from Storyboard to load UI elements to make available for testing
-                _ = detailViewController.view
-                
-                let indexPath = tableView.indexPathForSelectedRow
-                
-                if let selectedRow = indexPath?.row {
-                    let entry = EntryController.sharedController.entries[selectedRow]
-                    detailViewController.updateWithEntry(entry)
-                }
+                    let entry = EntryController.sharedController.entries[selectedIndex]
+                    detailViewController.entry = entry
             }
         }
     }
