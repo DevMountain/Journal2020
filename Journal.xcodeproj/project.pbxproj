@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A37E3271BD05F0B00A0BE06 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A37E3261BD05F0B00A0BE06 /* Entry.swift */; settings = {ASSET_TAGS = (); }; };
+		1A37E3291BD05F6200A0BE06 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A37E3281BD05F6200A0BE06 /* EntryController.swift */; settings = {ASSET_TAGS = (); }; };
+		1A37E32B1BD0638F00A0BE06 /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A37E32A1BD0638F00A0BE06 /* EntryListViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1A37E32D1BD06C7F00A0BE06 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A37E32C1BD06C7F00A0BE06 /* EntryDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68816AC71BBB5405000569CE /* AppDelegate.swift */; };
 		68816ACA1BBB5405000569CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68816AC91BBB5405000569CE /* ViewController.swift */; };
 		68816ACD1BBB5405000569CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68816ACB1BBB5405000569CE /* Main.storyboard */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A37E3261BD05F0B00A0BE06 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		1A37E3281BD05F6200A0BE06 /* EntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		1A37E32A1BD0638F00A0BE06 /* EntryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryListViewController.swift; sourceTree = "<group>"; };
+		1A37E32C1BD06C7F00A0BE06 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		68816AC41BBB5405000569CE /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68816AC71BBB5405000569CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68816AC91BBB5405000569CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +108,10 @@
 				68816AC71BBB5405000569CE /* AppDelegate.swift */,
 				68816AC91BBB5405000569CE /* ViewController.swift */,
 				68816ACB1BBB5405000569CE /* Main.storyboard */,
+				1A37E32A1BD0638F00A0BE06 /* EntryListViewController.swift */,
+				1A37E32C1BD06C7F00A0BE06 /* EntryDetailViewController.swift */,
+				1A37E3261BD05F0B00A0BE06 /* Entry.swift */,
+				1A37E3281BD05F6200A0BE06 /* EntryController.swift */,
 				68816ACE1BBB5405000569CE /* Assets.xcassets */,
 				68816AD01BBB5405000569CE /* LaunchScreen.storyboard */,
 				68816AD31BBB5405000569CE /* Info.plist */,
@@ -255,7 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A37E3271BD05F0B00A0BE06 /* Entry.swift in Sources */,
 				68816ACA1BBB5405000569CE /* ViewController.swift in Sources */,
+				1A37E32B1BD0638F00A0BE06 /* EntryListViewController.swift in Sources */,
+				1A37E3291BD05F6200A0BE06 /* EntryController.swift in Sources */,
+				1A37E32D1BD06C7F00A0BE06 /* EntryDetailViewController.swift in Sources */,
 				68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +499,7 @@
 				68816AEE1BBB5406000569CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68816AEF1BBB5406000569CE /* Build configuration list for PBXNativeTarget "JournalTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +508,7 @@
 				68816AF11BBB5406000569CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68816AF21BBB5406000569CE /* Build configuration list for PBXNativeTarget "JournalUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +517,7 @@
 				68816AF41BBB5406000569CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
