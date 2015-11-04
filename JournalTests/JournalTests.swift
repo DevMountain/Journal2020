@@ -26,7 +26,6 @@ class JournalTests: XCTestCase {
         super.tearDown()
         
         // Resets persisted entries
-        controller.entries = []
         
         // MARK: Part 3
         controller.saveToPersistentStorage()
@@ -80,9 +79,6 @@ class JournalTests: XCTestCase {
         
         XCTAssert(controller.entries.contains(testEntry), "Entry object not added to EntryController's entries array.")
         
-        controller.entries = []
-        
-        controller.loadFromPersistentStorage()
         
         if let restoredEntry = controller.entries.last {
             

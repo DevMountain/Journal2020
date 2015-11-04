@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682071491BEA71CD00511CFD /* EntryResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682071481BEA71CD00511CFD /* EntryResultsTableViewController.swift */; };
 		682940A11BBE42A000359935 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682940A01BBE42A000359935 /* EntryController.swift */; };
 		682940A21BBE465500359935 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682940A01BBE42A000359935 /* EntryController.swift */; };
 		685863BB1BCFF79E00CB5302 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682940A01BBE42A000359935 /* EntryController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682071481BEA71CD00511CFD /* EntryResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryResultsTableViewController.swift; sourceTree = "<group>"; };
 		682940A01BBE42A000359935 /* EntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 		685863BC1BCFF89C00CB5302 /* EntryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryListTableViewController.swift; sourceTree = "<group>"; };
 		685863BE1BCFF8AB00CB5302 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				68816ACB1BBB5405000569CE /* Main.storyboard */,
 				685863BC1BCFF89C00CB5302 /* EntryListTableViewController.swift */,
 				685863BE1BCFF8AB00CB5302 /* EntryDetailViewController.swift */,
+				682071481BEA71CD00511CFD /* EntryResultsTableViewController.swift */,
 				685E42D51BBD8267003818EB /* Entry.swift */,
 				682940A01BBE42A000359935 /* EntryController.swift */,
 				68816ACE1BBB5405000569CE /* Assets.xcassets */,
@@ -273,6 +276,7 @@
 				685863BD1BCFF89C00CB5302 /* EntryListTableViewController.swift in Sources */,
 				685863BF1BCFF8AB00CB5302 /* EntryDetailViewController.swift in Sources */,
 				68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */,
+				682071491BEA71CD00511CFD /* EntryResultsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

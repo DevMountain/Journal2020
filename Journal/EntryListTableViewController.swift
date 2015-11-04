@@ -8,10 +8,14 @@
 
 import UIKit
 
-class EntryListTableViewController: UITableViewController {
+class EntryListTableViewController: UITableViewController, UISearchResultsUpdating {
+
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpSearchController()
         
     }
     
@@ -19,6 +23,31 @@ class EntryListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+    }
+    
+    func setUpSearchController() {
+        
+        let resultsController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ResultsController")
+        
+        searchController = UISearchController(searchResultsController: resultsController)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
+        
+        definesPresentationContext = true
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+        let searchTerm = searchController.searchBar.text!.lowercaseString
+        
+        let resultsController = searchController.searchResultsController as? EntryResultsTableViewController
+        
+        if let resultsController = resultsController {
+            resultsController.filteredEntries = EntryController.sharedController.entries.filter({$0.title.lowercaseString.containsString(searchTerm)})
+            resultsController.tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
@@ -51,22 +80,33 @@ class EntryListTableViewController: UITableViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        
         if segue.identifier == "toShowEntry" {
+            let sender = sender as! UITableViewCell
             
-            if let detailViewController = segue.destinationViewController as? EntryDetailViewController {
+            var selectedEntry: Entry
+            
+            // if we get an indexPath from the search results controller, use filteredEntries
+            // else, use EntryController
+            
+            if let indexPath = (searchController.searchResultsController as? EntryResultsTableViewController)?.tableView.indexPathForCell(sender) {
                 
-                // Following line forces the view from Storyboard to load UI elements to make available for testing
-                _ = detailViewController.view
+                let filteredEntries = (searchController.searchResultsController as! EntryResultsTableViewController).filteredEntries
                 
-                let indexPath = tableView.indexPathForSelectedRow
+                selectedEntry = filteredEntries[indexPath.row]
+            } else {
                 
-                if let selectedRow = indexPath?.row {
-                    let entry = EntryController.sharedController.entries[selectedRow]
-                    detailViewController.updateWithEntry(entry)
-                }
+                let indexPath = tableView.indexPathForCell(sender)!
+                selectedEntry = EntryController.sharedController.entries[indexPath.row]
             }
+            
+            if let destinationViewController = segue.destinationViewController as? EntryDetailViewController {
+                _ = destinationViewController.view
+                destinationViewController.updateWithEntry(selectedEntry)
+            }
+            
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
