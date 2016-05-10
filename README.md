@@ -183,6 +183,8 @@ Our EntryController object is the source of truth for entries. We are now adding
 
 ### Black Diamonds
 
+* Add support for multiple journals by adding a Journal object that holds entries, a Journal List View that displays Journals, and making the Entry List View display just the entries from the selected journal
+* Add support for tags on journals, add functionality to select a tag to display a list of entries with that tag
 * Implement the NSCoding protocol on the Entry class
 * Create a Unit test that verifies NSCoding functionality by converting an instance to and from NSData
 * Refactor persistence to work natively with Entry objects
