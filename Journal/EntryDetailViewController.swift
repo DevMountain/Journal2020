@@ -23,28 +23,28 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @IBAction func saveButtonTapped(sender: AnyObject) {
+    @IBAction func saveButtonTapped(_ sender: AnyObject) {
         
         if let entry = self.entry {
             entry.title = self.titleTextField.text!
             entry.text = self.bodyTextView.text
-            entry.timestamp = NSDate()
+            entry.timestamp = Date()
         } else {
             let newEntry = Entry(title: self.titleTextField.text!, text: self.bodyTextView.text)
             EntryController.sharedController.addEntry(newEntry)
             self.entry = newEntry
         }
         
-        self.navigationController?.popViewControllerAnimated(true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func clearButtonTapped(sender: AnyObject) {
+    @IBAction func clearButtonTapped(_ sender: AnyObject) {
         
         titleTextField.text = ""
         bodyTextView.text = ""
     }
     
-    func updateWithEntry(entry: Entry) {
+    func updateWithEntry(_ entry: Entry) {
         self.entry = entry
         
         self.titleTextField.text = entry.title
@@ -53,7 +53,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
         

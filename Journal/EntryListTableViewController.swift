@@ -15,7 +15,7 @@ class EntryListTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
@@ -23,39 +23,39 @@ class EntryListTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EntryController.sharedController.entries.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("entryCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
 
-        let entry = EntryController.sharedController.entries[indexPath.row]
+        let entry = EntryController.sharedController.entries[(indexPath as NSIndexPath).row]
         
         cell.textLabel?.text = entry.title
 
         return cell
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             
-            let entry = EntryController.sharedController.entries[indexPath.row]
+            let entry = EntryController.sharedController.entries[(indexPath as NSIndexPath).row]
             
             EntryController.sharedController.removeEntry(entry)
             
             // Delete the row from the table view
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "toShowEntry" {
             
-            if let detailViewController = segue.destinationViewController as? EntryDetailViewController,
-                let selectedIndex = tableView.indexPathForSelectedRow?.row {
+            if let detailViewController = segue.destination as? EntryDetailViewController,
+                let selectedIndex = (tableView.indexPathForSelectedRow as NSIndexPath?)?.row {
                 
                     let entry = EntryController.sharedController.entries[selectedIndex]
                     detailViewController.entry = entry

@@ -10,7 +10,7 @@ import Foundation
 
 class EntryController {
     
-    private let entriesKey = "entries"
+    fileprivate let entriesKey = "entries"
     
     static let sharedController = EntryController()
     
@@ -23,17 +23,17 @@ class EntryController {
         self.loadFromPersistentStorage()
     }
     
-    func addEntry(entry: Entry) {
+    func addEntry(_ entry: Entry) {
         
         entries.append(entry)
         
         self.saveToPersistentStorage()
     }
     
-    func removeEntry(entry: Entry) {
+    func removeEntry(_ entry: Entry) {
         
-        if let entryIndex = entries.indexOf(entry) {
-            entries.removeAtIndex(entryIndex)
+        if let entryIndex = entries.index(of: entry) {
+            entries.remove(at: entryIndex)
         }
         
         self.saveToPersistentStorage()
@@ -41,7 +41,7 @@ class EntryController {
     
     func loadFromPersistentStorage() {
         
-        let entryDictionariesFromDefaults = NSUserDefaults.standardUserDefaults().objectForKey(entriesKey) as? [Dictionary<String, AnyObject>]
+        let entryDictionariesFromDefaults = UserDefaults.standard.object(forKey: entriesKey) as? [Dictionary<String, AnyObject>]
 
         if let entryDictionaries = entryDictionariesFromDefaults {
         
@@ -53,7 +53,7 @@ class EntryController {
         
         let entryDictionaries = self.entries.map({$0.dictionaryCopy()})
         
-        NSUserDefaults.standardUserDefaults().setObject(entryDictionaries, forKey: entriesKey)
+        UserDefaults.standard.set(entryDictionaries, forKey: entriesKey)
     }
     
 }

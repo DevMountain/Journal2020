@@ -11,8 +11,8 @@ import XCTest
 
 class JournalTests: XCTestCase {
     
-    private let testTitle = "Test Title"
-    private let testBodyText = "Lorem ipsum doler init."
+    fileprivate let testTitle = "Test Title"
+    fileprivate let testBodyText = "Lorem ipsum doler init."
     
     let controller = EntryController.sharedController
     

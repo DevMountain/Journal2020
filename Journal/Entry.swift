@@ -10,15 +10,15 @@ import Foundation
 
 class Entry: Equatable {
     
-    private let timestampKey = "timestamp"
-    private let titleKey = "title"
-    private let textKey = "text"
+    fileprivate let timestampKey = "timestamp"
+    fileprivate let titleKey = "title"
+    fileprivate let textKey = "text"
     
-    var timestamp: NSDate
+    var timestamp: Date
     var title: String
     var text: String
     
-    init(timestamp: NSDate = NSDate(), title: String, text: String) {
+    init(timestamp: Date = Date(), title: String, text: String) {
         
         self.timestamp = timestamp
         self.title = title
@@ -26,12 +26,12 @@ class Entry: Equatable {
     }
     
     init?(dictionary: Dictionary<String, AnyObject>) {
-        guard let timestamp = dictionary[timestampKey] as? NSDate,
+        guard let timestamp = dictionary[timestampKey] as? Date,
             let title = dictionary[titleKey] as? String,
             let text = dictionary[textKey] as? String else {
                 
                 // sets values for stored properties due to requirement as of Swift 2.0
-                self.timestamp = NSDate()
+                self.timestamp = Date()
                 self.title = ""
                 self.text = ""
 
@@ -50,9 +50,9 @@ class Entry: Equatable {
             timestampKey : self.timestamp,
             titleKey : self.title,
             textKey : self.text
-        ]
+        ] as [String : Any]
         
-        return dictionary
+        return dictionary as Dictionary<String, AnyObject>
     }
     
 }
