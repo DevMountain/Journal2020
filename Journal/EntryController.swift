@@ -10,7 +10,7 @@ import Foundation
 
 class EntryController {
     
-    fileprivate let entriesKey = "entries"
+    private let entriesKey = "entries"
     
     static let sharedController = EntryController()
     

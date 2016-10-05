@@ -9,19 +9,14 @@
 import UIKit
 
 class EntryListTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
+	
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
     }
     
-    // MARK: - Table view data source
+    // MARK: UITableViewDataSource/Delegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EntryController.sharedController.entries.count
@@ -55,18 +50,11 @@ class EntryListTableViewController: UITableViewController {
         if segue.identifier == "toShowEntry" {
             
             if let detailViewController = segue.destination as? EntryDetailViewController,
-                let selectedIndex = (tableView.indexPathForSelectedRow as NSIndexPath?)?.row {
+                let selectedRow = tableView.indexPathForSelectedRow?.row {
                 
-                    let entry = EntryController.sharedController.entries[selectedIndex]
+                    let entry = EntryController.sharedController.entries[selectedRow]
                     detailViewController.entry = entry
             }
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }

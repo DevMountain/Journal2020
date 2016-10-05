@@ -9,19 +9,14 @@
 import UIKit
 
 class EntryDetailViewController: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var bodyTextView: UITextView!
-    
-    var entry: Entry?
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let entry = entry {
-            updateWithEntry(entry)
-        }
+		updateViews()
     }
+	
+	// MARK: Actions
 
     @IBAction func saveButtonTapped(_ sender: AnyObject) {
         
@@ -43,12 +38,13 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         titleTextField.text = ""
         bodyTextView.text = ""
     }
+	
+	// MARK: Private
     
-    func updateWithEntry(_ entry: Entry) {
-        self.entry = entry
-        
-        self.titleTextField.text = entry.title
-        self.bodyTextView.text = entry.text
+    private func updateViews() {
+		guard let entry = entry else { return }
+        titleTextField.text = entry.title
+        bodyTextView.text = entry.text
     }
     
     // MARK: UITextFieldDelegate
@@ -59,5 +55,15 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-
+	
+	// MARK: Properties
+	
+	var entry: Entry? {
+		didSet {
+			updateViews()
+		}
+	}
+	
+	@IBOutlet weak var titleTextField: UITextField!
+	@IBOutlet weak var bodyTextView: UITextView!
 }

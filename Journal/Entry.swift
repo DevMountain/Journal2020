@@ -10,16 +10,16 @@ import Foundation
 
 class Entry: Equatable {
     
-    fileprivate let timestampKey = "timestamp"
-    fileprivate let titleKey = "title"
-    fileprivate let textKey = "text"
+    private let timestampKey = "timestamp"
+    private let titleKey = "title"
+    private let textKey = "text"
     
     var timestamp: Date
     var title: String
     var text: String
     
     init(timestamp: Date = Date(), title: String, text: String) {
-        
+		
         self.timestamp = timestamp
         self.title = title
         self.text = text
@@ -30,7 +30,6 @@ class Entry: Equatable {
             let title = dictionary[titleKey] as? String,
             let text = dictionary[textKey] as? String else {
                 
-                // sets values for stored properties due to requirement as of Swift 2.0
                 self.timestamp = Date()
                 self.title = ""
                 self.text = ""
@@ -41,7 +40,6 @@ class Entry: Equatable {
         self.timestamp = timestamp
         self.title = title
         self.text = text
-
     }
     
     func dictionaryCopy() -> Dictionary<String, AnyObject> {
@@ -57,6 +55,6 @@ class Entry: Equatable {
     
 }
 
-func == (lhs: Entry, rhs: Entry) -> Bool {
+func ==(lhs: Entry, rhs: Entry) -> Bool {
     return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
