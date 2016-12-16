@@ -26,7 +26,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 			entry.timestamp = Date()
 		} else {
 			let newEntry = Entry(title: self.titleTextField.text!, text: self.bodyTextView.text)
-			EntryController.shared.addEntry(newEntry)
+			EntryController.shared.add(entry: newEntry)
 			entry = newEntry
 		}
 		

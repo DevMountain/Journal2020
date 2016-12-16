@@ -9,51 +9,39 @@
 import Foundation
 
 class EntryController {
-    
-    private static let EntriesKey = "entries"
-    
-    static let shared = EntryController()
-    
-    init() {
-        loadFromPersistentStorage()
-    }
-    
-    func addEntry(_ entry: Entry) {
-        
-        entries.append(entry)
-        
-        saveToPersistentStorage()
-    }
-    
-    func removeEntry(_ entry: Entry) {
+	
+	private static let EntriesKey = "entries"
+	
+	static let shared = EntryController()
+	
+	var entries: [Entry] {
+		let entryDictionaries = UserDefaults.standard.object(forKey: EntryController.EntriesKey) as? [[String : Any]]
 		
-        if let entryIndex = entries.index(of: entry) {
-            entries.remove(at: entryIndex)
-        }
-        
-        saveToPersistentStorage()
-    }
+		return entryDictionaries?.flatMap { Entry(dictionary: $0) } ?? []
+	}
 	
-	// MARK: Private
-    
-    private func loadFromPersistentStorage() {
-        
-		let entryDictionariesFromDefaults = UserDefaults.standard.object(forKey: EntryController.EntriesKey) as? [[String : Any]]
-
-        if let entryDictionaries = entryDictionariesFromDefaults {
-        
-            entries = entryDictionaries.flatMap { Entry(dictionary: $0) }
-        }
-    }
-    
-    private func saveToPersistentStorage() {
-        
-        let entryDictionaries = entries.map { $0.dictionaryRepresentation() }
-        
-        UserDefaults.standard.set(entryDictionaries, forKey: EntryController.EntriesKey)
-    }
+	func add(entry: Entry) {
+		
+		var scratch = self.entries
+		scratch.append(entry)
+		
+		saveToPersistentStorage(newEntries: scratch)
+	}
 	
-	// MARK: Properties
+	func remove(entry: Entry) {
+		
+		var scratch = self.entries
+		if let index = scratch.index(of: entry) {
+			scratch.remove(at: index)
+		}
+		saveToPersistentStorage(newEntries: scratch)
+	}
 	
-	private(set) var entries = [Entry]()
+	func saveToPersistentStorage(newEntries: [Entry]) {
+		
+		let entryDictionaries = newEntries.map { $0.dictionaryRepresentation() }
+		
+		UserDefaults.standard.set(entryDictionaries, forKey: EntryController.EntriesKey)
+	}
+	
 }
