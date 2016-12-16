@@ -55,5 +55,7 @@ class Entry: Equatable {
 }
 
 func ==(lhs: Entry, rhs: Entry) -> Bool {
-	return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+	if lhs.timestamp != rhs.timestamp { return false }
+	if lhs.title != rhs.title { return false }
+	if lhs.text != rhs.text { return false }
 }
