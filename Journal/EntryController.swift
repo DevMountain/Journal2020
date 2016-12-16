@@ -55,5 +55,5 @@ class EntryController {
 	
 	// MARK: Properties
 	
-	var entries = [Entry]()
+	private(set) var entries = [Entry]()
 }
