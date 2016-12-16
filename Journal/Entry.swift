@@ -58,4 +58,6 @@ func ==(lhs: Entry, rhs: Entry) -> Bool {
 	if lhs.timestamp != rhs.timestamp { return false }
 	if lhs.title != rhs.title { return false }
 	if lhs.text != rhs.text { return false }
+	
+	return true
 }
