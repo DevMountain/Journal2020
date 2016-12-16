@@ -37,8 +37,8 @@ class EntryListTableViewController: UITableViewController {
 		if editingStyle == .delete {
 			let ec = EntryController.shared
             let entry = ec.entries[indexPath.row]
-            ec.removeEntry(entry)
-            
+			ec.remove(entry: entry)
+			
             // Delete the row from the table view
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

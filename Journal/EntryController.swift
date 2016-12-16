@@ -18,14 +18,14 @@ class EntryController {
         loadFromPersistentStorage()
     }
     
-    func addEntry(_ entry: Entry) {
+    func add(entry: Entry) {
         
         entries.append(entry)
         
         saveToPersistentStorage()
     }
     
-    func removeEntry(_ entry: Entry) {
+    func remove(entry: Entry) {
 		
         if let entryIndex = entries.index(of: entry) {
             entries.remove(at: entryIndex)
