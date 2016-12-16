@@ -10,51 +10,51 @@ import UIKit
 
 class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
 		updateViews()
-    }
+	}
 	
 	// MARK: Actions
-
-    @IBAction func saveButtonTapped(_ sender: AnyObject) {
-        
-        if let entry = self.entry {
-            entry.title = self.titleTextField.text!
-            entry.text = self.bodyTextView.text
-            entry.timestamp = Date()
-        } else {
-            let newEntry = Entry(title: self.titleTextField.text!, text: self.bodyTextView.text)
-            EntryController.sharedController.addEntry(newEntry)
-            self.entry = newEntry
-        }
-        
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func clearButtonTapped(_ sender: AnyObject) {
-        
-        titleTextField.text = ""
-        bodyTextView.text = ""
-    }
+	
+	@IBAction func saveButtonTapped(_ sender: AnyObject) {
+		
+		if let entry = self.entry {
+			entry.title = self.titleTextField.text!
+			entry.text = self.bodyTextView.text
+			entry.timestamp = Date()
+		} else {
+			let newEntry = Entry(title: self.titleTextField.text!, text: self.bodyTextView.text)
+			EntryController.shared.addEntry(newEntry)
+			entry = newEntry
+		}
+		
+		let _ = self.navigationController?.popViewController(animated: true)
+	}
+	
+	@IBAction func clearButtonTapped(_ sender: AnyObject) {
+		
+		titleTextField.text = ""
+		bodyTextView.text = ""
+	}
 	
 	// MARK: Private
-    
-    private func updateViews() {
+	
+	private func updateViews() {
 		guard let entry = entry else { return }
-        titleTextField.text = entry.title
-        bodyTextView.text = entry.text
-    }
-    
-    // MARK: UITextFieldDelegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        
-        return true
-    }
+		titleTextField.text = entry.title
+		bodyTextView.text = entry.text
+	}
+	
+	// MARK: UITextFieldDelegate
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		
+		textField.resignFirstResponder()
+		
+		return true
+	}
 	
 	// MARK: Properties
 	

@@ -10,50 +10,50 @@ import Foundation
 
 class EntryController {
     
-    private let entriesKey = "entries"
+    private static let EntriesKey = "entries"
     
-    static let sharedController = EntryController()
-    
-    var entries: [Entry]
+    static let shared = EntryController()
     
     init() {
-        
-        self.entries = []
-        
-        self.loadFromPersistentStorage()
+        loadFromPersistentStorage()
     }
     
     func addEntry(_ entry: Entry) {
         
         entries.append(entry)
         
-        self.saveToPersistentStorage()
+        saveToPersistentStorage()
     }
     
     func removeEntry(_ entry: Entry) {
-        
+		
         if let entryIndex = entries.index(of: entry) {
             entries.remove(at: entryIndex)
         }
         
-        self.saveToPersistentStorage()
+        saveToPersistentStorage()
     }
+	
+	// MARK: Private
     
-    func loadFromPersistentStorage() {
+    private func loadFromPersistentStorage() {
         
-        let entryDictionariesFromDefaults = UserDefaults.standard.object(forKey: entriesKey) as? [Dictionary<String, AnyObject>]
+		let entryDictionariesFromDefaults = UserDefaults.standard.object(forKey: EntryController.EntriesKey) as? [[String : Any]]
 
         if let entryDictionaries = entryDictionariesFromDefaults {
         
-            self.entries = entryDictionaries.map({Entry(dictionary: $0)!})
+            entries = entryDictionaries.flatMap { Entry(dictionary: $0) }
         }
     }
     
-    func saveToPersistentStorage() {
+    private func saveToPersistentStorage() {
         
-        let entryDictionaries = self.entries.map({$0.dictionaryCopy()})
+        let entryDictionaries = entries.map { $0.dictionaryRepresentation() }
         
-        UserDefaults.standard.set(entryDictionaries, forKey: entriesKey)
+        UserDefaults.standard.set(entryDictionaries, forKey: EntryController.EntriesKey)
     }
-    
+	
+	// MARK: Properties
+	
+	var entries = [Entry]()
 }
