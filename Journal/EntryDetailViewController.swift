@@ -18,7 +18,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 	
 	// MARK: Actions
 	
-	@IBAction func saveButtonTapped(_ sender: AnyObject) {
+	@IBAction func saveButtonTapped(_ sender: Any) {
 		
 		if let entry = self.entry {
 			entry.title = self.titleTextField.text!
@@ -33,7 +33,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 		let _ = self.navigationController?.popViewController(animated: true)
 	}
 	
-	@IBAction func clearButtonTapped(_ sender: AnyObject) {
+	@IBAction func clearButtonTapped(_ sender: Any) {
 		
 		titleTextField.text = ""
 		bodyTextView.text = ""
