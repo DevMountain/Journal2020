@@ -18,7 +18,9 @@ class EntryController {
         loadFromPersistentStorage()
     }
     
-    func add(entry: Entry) {
+    func addEntryWith(title: String, text: String) {
+        
+        let entry = Entry(title: title, text: text)
         
         entries.append(entry)
         
@@ -31,6 +33,13 @@ class EntryController {
             entries.remove(at: entryIndex)
         }
         
+        saveToPersistentStorage()
+    }
+    
+    func update(entry: Entry, with title: String, text: String) {
+        
+        entry.title = title
+        entry.text = text
         saveToPersistentStorage()
     }
 	
