@@ -24,14 +24,7 @@ class Entry: Equatable {
 	init?(dictionary: [String : Any]) {
 		guard let timestamp = dictionary[Entry.TimestampKey] as? Date,
 			let title = dictionary[Entry.TitleKey] as? String,
-			let text = dictionary[Entry.TextKey] as? String else {
-				
-				self.timestamp = Date()
-				self.title = ""
-				self.text = ""
-				
-				return nil
-		}
+			let text = dictionary[Entry.TextKey] as? String else { return nil }
 		
 		self.timestamp = timestamp
 		self.title = title
