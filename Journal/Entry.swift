@@ -31,7 +31,7 @@ class Entry: Equatable {
 		self.text = text
 	}
 	
-	func dictionaryRepresentation() -> [String : Any] {
+    var dictionaryRepresentation: [String : Any] {
 		return [
 			Entry.TimestampKey : timestamp,
 			Entry.TitleKey : title,
