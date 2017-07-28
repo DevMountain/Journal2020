@@ -18,14 +18,16 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 	
 	// MARK: Actions
 	
-	@IBAction func saveButtonTapped(_ sender: AnyObject) {
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        guard let title = titleTextField.text, let text = bodyTextView.text else { return }
 		
 		if let entry = self.entry {
-			entry.title = self.titleTextField.text!
-			entry.text = self.bodyTextView.text
-			entry.timestamp = Date()
+            entry.title = title
+            entry.text = text
+            entry.timestamp = Date()
 		} else {
-			let newEntry = Entry(title: self.titleTextField.text!, text: self.bodyTextView.text)
+			let newEntry = Entry(title: title, text: text)
 			EntryController.shared.add(entry: newEntry)
 			entry = newEntry
 		}
@@ -33,7 +35,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 		let _ = self.navigationController?.popViewController(animated: true)
 	}
 	
-	@IBAction func clearButtonTapped(_ sender: AnyObject) {
+    @IBAction func clearButtonTapped(_ sender: Any) {
 		
 		titleTextField.text = ""
 		bodyTextView.text = ""
@@ -60,7 +62,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 	
 	var entry: Entry? {
 		didSet {
-			updateViews()
+            if isViewLoaded { updateViews() }
 		}
 	}
 	

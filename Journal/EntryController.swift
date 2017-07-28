@@ -23,8 +23,7 @@ class EntryController {
 	func add(entry: Entry) {
 		
 		var scratch = self.entries
-		scratch.append(entry)
-		
+		scratch.append(entry)		
 		saveToPersistentStorage(newEntries: scratch)
 	}
 	
