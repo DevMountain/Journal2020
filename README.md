@@ -19,8 +19,8 @@ Students who complete this project independently are able to:
 ### Part Two - User Interface
 
 * Implement a master-detail interface
-* Implement the UITableViewDataSource protocol
-* Understand and implement the UITextFieldDelegate protocol to dismiss the keyboard
+* Implement the `UITableViewDataSource` protocol
+* Understand and implement the `UITextFieldDelegate` protocol to dismiss the keyboard
 * Create relationship segues in Storyboards
 * Understand, use, and implement the 'updateViews' pattern
 * Implement 'prepare(for segue: UIStoryboardSegue, sender: Any?)' to configure destination view controllers
