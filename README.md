@@ -2,7 +2,7 @@
 
 ### Level 1
 
-Students will build a simple journal app to practice MVC separation, protocols, master-detail interfaces, table views, and persistence. 
+Students will build a simple journal app to practice MVC separation, protocols, master-detail interfaces, table views, and persistence.
 
 Journal is an excellent app to practice basic Cocoa Touch princples and design patterns. Students are encouraged to repeat building Journal regularly until the principles and patterns are internalized and the student can build Journal without a guide.
 
@@ -84,7 +84,7 @@ Uncomment any relevant tests for this part. Verify that required classes are mem
 
 Build a view that lists all journal entries. You will use a UITableViewController and implement the UITableViewDataSource functions.
 
-The UITableViewController subclass template comes with a lot of boilerplate and commented code. For readability, please remove all unnecessary boilerplate from your code. 
+The UITableViewController subclass template comes with a lot of boilerplate and commented code. For readability, please remove all unnecessary boilerplate from your code.
 
 You will want this view to reload the table view each time it appears in order to display newly created entries.
 
@@ -103,31 +103,30 @@ Build a view that provides editing and view functionality for a single entry. Yo
 
 Your Detail View should follow the 'updateViews' pattern for updating the view elements with the details of a model object. To follow this pattern, the developer adds an 'updateViews' function that checks for a model object. The function updates the view with details from the model object.
 
-1. Add an `EntryDetailViewController` file as a subclass of UIViewController and an optional `entry` property to the class 
+1. Add an `EntryDetailViewController` file as a subclass of UIViewController and an optional `entry` property to the class
 2. Add a UIViewController scene to Main.storyboard and set the class to `EntryDetailViewController`
 3. Add a UITextField for the entry's title text to the top of the scene, add an outlet to the class file called `titleTextField`, and set the delegate relationship
-* To set the delegate relationship control drag from the UITextField to the current view controller in the scene dock 
+(*To set the delegate relationship control drag from the UITextField to the current view controller in the scene dock*)
 4. Implement the delegate function `textFieldShouldReturn` to resign first responder to dismiss the keyboard
-* Before you implement the delegate function be sure to adopt the UITextFieldDelegate protocol 
+(*Before you implement the delegate function be sure to adopt the UITextFieldDelegate protocol*)
 5. Add a UITextView for the entry's body text beneath the title text field and add an outlet to the class file `bodyTextView`.
 6. Add a UIButton beneath the body text view and add an IBAction to the class file that clears the text in the titleTextField and bodyTextView.
 7. Add a UIBarButtonItem to the UINavigationBar as a Save System Item and add an IBAction to the class file
-* You may need to add a segue to see a UINavigationBar on the detail view, and a UINavigationItem to add the UIBarButtonItem to the UINavigationBar, this will be covered in the next section
-8. In the IBAction check if the optional `entry` property holds an entry, if so, call the `update(entry: ...)` function in the `EntryController` to  update the properties of the entry. If not, call the `add(entry: Entry)` function on the `EntryController`. After adding a new entry, or updating the existing entry, dismiss the current view.
+(*You may need to add a segue to see a UINavigationBar on the detail view, and a UINavigationItem to add the UIBarButtonItem to the UINavigationBar, this will be covered in the next section*)
+8. In the IBAction, check if the optional `entry` property holds an entry, if so, call the `update(entry: ...)` function in the `EntryController` to  update the properties of the entry. If not, call the `add(entry: Entry)` function on the `EntryController`. After adding a new entry, or updating the existing entry, dismiss the current view.
 9. Add an `updateViews()` function that checks if the optional `entry` property holds an entry. If it doesn't, implement the function to update all view elements that reflect details about the model object (in this case, the titleTextField and bodyTextView)
-10. Make your `entry` property a computed property and call `updateViews()` whenever that property gets set
-11. Update the `viewDidLoad()` function to call `updateViews()`
+10. Update the `viewDidLoad()` function to call `updateViews()`
 
 ### Segue
 
 You will add two separate segues from the List View to the Detail View. The segue from the plus button will tell the EntryDetailViewController that it should create a new entry. The segue from a selected cell will tell the EntryDetailViewController that it should display a previously created entry, and save any changes to the same.
 
 1. Add a 'show' segue from the Add button to the EntryDetailViewController scene and give the segue an identifier
-* Consider that this segue will be used to add an entry when naming the identifier
+(*Consider that this segue will be used to add an entry when naming the identifier*)
 2. Add a 'show' segue from the table view cell to the EntryDetailViewController scene and give the segue an identifier
-* Consider that this segue will be used to edit an entry when naming the identifier
+(* Consider that this segue will be used to edit an entry when naming the identifier*)
 3. Add a `prepare(for segue: UIStoryboardSegue, sender: Any?)` function to the EntryListTableViewController
-4. Implement the `prepare(for segue: UIStoryboardSegue, sender: Any?)` function. If the identifier is 'toShowEntry' we will pass the selected entry to the DetailViewController, which will call our `updateViews()` function 
+4. Implement the `prepare(for segue: UIStoryboardSegue, sender: Any?)` function. If the identifier is 'toShowEntry' we will pass the selected entry to the DetailViewController, which will call our `updateViews()` function
 * You will need to capture the selected entry by using the indexPath of the selected cell
 * Remember that the `updateViews()` function will update the destination view controller with the entry details
 * Since we aren't passing an entry if the identifier is 'toAddEntry' we don't need to account for this in our `prepare(for segue: UIStoryboardSegue, sender: Any?)`
@@ -145,7 +144,7 @@ Uncomment any relevant tests for this part. Verify that required classes are mem
 
 ## Part Three - Controller Implementation
 
-You will use UserDefaults to add basic data persistence to the Journal app. 
+You will use UserDefaults to add basic data persistence to the Journal app.
 
 ### Add Factory Functions to Entry
 
@@ -198,4 +197,3 @@ Please refer to CONTRIBUTING.md.
 ## Copyright
 
 © DevMountain LLC, 2015. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
-
