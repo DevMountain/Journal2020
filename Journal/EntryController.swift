@@ -57,7 +57,7 @@ class EntryController {
     
     private func saveToPersistentStorage() {
         
-        let entryDictionaries = entries.map { $0.dictionaryRepresentation() }
+        let entryDictionaries = entries.map { $0.dictionaryRepresentation }
         
         UserDefaults.standard.set(entryDictionaries, forKey: EntryController.EntriesKey)
     }
