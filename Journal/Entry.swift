@@ -8,11 +8,7 @@
 
 import Foundation
 
-class Entry: Equatable {
-	
-	private static let TimestampKey = "timestamp"
-	private static let TitleKey = "title"
-	private static let TextKey = "text"
+class Entry: Equatable, Codable {
 	
 	init(timestamp: Date = Date(), title: String, text: String) {
 		
@@ -21,37 +17,11 @@ class Entry: Equatable {
 		self.text = text
 	}
 	
-	init?(dictionary: [String : Any]) {
-		guard let timestamp = dictionary[Entry.TimestampKey] as? Date,
-			let title = dictionary[Entry.TitleKey] as? String,
-			let text = dictionary[Entry.TextKey] as? String else {
-				
-				self.timestamp = Date()
-				self.title = ""
-				self.text = ""
-				
-				return nil
-		}
-		
-		self.timestamp = timestamp
-		self.title = title
-		self.text = text
-	}
-	
-	func dictionaryRepresentation() -> [String : Any] {
-		return [
-			Entry.TimestampKey : timestamp,
-			Entry.TitleKey : title,
-			Entry.TextKey : text
-		]
-	}
-	
 	// MARK: Properties
 	
 	var timestamp: Date
 	var title: String
 	var text: String
-	
 }
 
 func ==(lhs: Entry, rhs: Entry) -> Bool {
