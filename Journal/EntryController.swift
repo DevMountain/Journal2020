@@ -10,8 +10,6 @@ import Foundation
 
 class EntryController {
     
-    private static let EntriesKey = "entries"
-    
     static let shared = EntryController()
     
     init() {
@@ -43,23 +41,37 @@ class EntryController {
         saveToPersistentStorage()
     }
 	
-	// MARK: Private
+	// MARK: - Persistence
+    
+    private func fileURL() -> URL {
+        
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileName = "journal.json"
+        let documentsDirectoryURL = urls[0].appendingPathComponent(fileName)
+        return documentsDirectoryURL
+    }
     
     private func loadFromPersistentStorage() {
         
-		let entryDictionariesFromDefaults = UserDefaults.standard.object(forKey: EntryController.EntriesKey) as? [[String : Any]]
-
-        if let entryDictionaries = entryDictionariesFromDefaults {
-        
-            entries = entryDictionaries.flatMap { Entry(dictionary: $0) }
+		let decoder = JSONDecoder()
+        do {
+            let data = try Data(contentsOf: fileURL())
+            let entries = try decoder.decode([Entry].self, from: data)
+            self.entries = entries
+        } catch let error {
+            print("There was an error saving to persistent storage: \(error)")
         }
     }
     
     private func saveToPersistentStorage() {
         
-        let entryDictionaries = entries.map { $0.dictionaryRepresentation }
-        
-        UserDefaults.standard.set(entryDictionaries, forKey: EntryController.EntriesKey)
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(entries)
+            try data.write(to: fileURL())
+        } catch let error {
+            print("There was an error saving to persistent storage: \(error)")
+        }
     }
 	
 	// MARK: Properties
