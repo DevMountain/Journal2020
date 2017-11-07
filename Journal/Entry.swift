@@ -17,7 +17,7 @@ class Entry: Equatable, Codable {
 		self.text = text
 	}
 	
-	// MARK: Properties
+  // MARK: Properties
 	
 	var timestamp: Date
 	var title: String
