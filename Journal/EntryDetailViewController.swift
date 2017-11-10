@@ -12,7 +12,6 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateViews()
     }
     
