@@ -10,64 +10,64 @@ import Foundation
 
 class EntryController {
 	
-    static let shared = EntryController()
-    
-    init() {
-        loadFromPersistentStorage()
-    }
-    
+	static let shared = EntryController()
+	
+	init() {
+		loadFromPersistentStorage()
+	}
+	
 	func add(entry: Entry) {
-        entries.append(entry)
-        saveToPersistentStorage()
-	}
-    
-    func remove(entry: Entry) {
-	
-        if let entryIndex = entries.index(of: entry) {
-            entries.remove(at: entryIndex)
-        }
-		
-        saveToPersistentStorage()
+		entries.append(entry)
+		saveToPersistentStorage()
 	}
 	
-    func update(entry: Entry, with title: String, text: String) {
+	func remove(entry: Entry) {
 		
-        entry.title = title
-        entry.text = text
-        saveToPersistentStorage()
+		if let entryIndex = entries.index(of: entry) {
+			entries.remove(at: entryIndex)
 		}
+		
+		saveToPersistentStorage()
+	}
+	
+	func update(entry: Entry, with title: String, text: String) {
+		
+		entry.title = title
+		entry.text = text
+		saveToPersistentStorage()
+	}
 	
 	// MARK: - Persistence
-    
-    private func fileURL() -> URL {
-        
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let fileName = "journal.json"
-        let documentsDirectoryURL = urls[0].appendingPathComponent(fileName)
-        return documentsDirectoryURL
+	
+	private func fileURL() -> URL {
+		
+		let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+		let fileName = "journal.json"
+		let documentsDirectoryURL = urls[0].appendingPathComponent(fileName)
+		return documentsDirectoryURL
 	}
 	
-    private func loadFromPersistentStorage() {
-        
+	private func loadFromPersistentStorage() {
+		
 		let decoder = JSONDecoder()
-        do {
-            let data = try Data(contentsOf: fileURL())
-            let entries = try decoder.decode([Entry].self, from: data)
-            self.entries = entries
-        } catch let error {
-            print("There was an error saving to persistent storage: \(error)")
-        }
-    }
+		do {
+			let data = try Data(contentsOf: fileURL())
+			let entries = try decoder.decode([Entry].self, from: data)
+			self.entries = entries
+		} catch let error {
+			print("There was an error saving to persistent storage: \(error)")
+		}
+	}
+	
+	private func saveToPersistentStorage() {
 		
-    private func saveToPersistentStorage() {
-		
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(entries)
-            try data.write(to: fileURL())
-        } catch let error {
-            print("There was an error saving to persistent storage: \(error)")
-        }
+		let encoder = JSONEncoder()
+		do {
+			let data = try encoder.encode(entries)
+			try data.write(to: fileURL())
+		} catch let error {
+			print("There was an error saving to persistent storage: \(error)")
+		}
 	}
 	
 	// MARK: Properties
