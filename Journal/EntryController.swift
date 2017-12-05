@@ -10,37 +10,67 @@ import Foundation
 
 class EntryController {
 	
-	private static let EntriesKey = "entries"
-	
-	static let shared = EntryController()
-	
-	var entries: [Entry] {
-		let entryDictionaries = UserDefaults.standard.object(forKey: EntryController.EntriesKey) as? [[String : Any]]
-		
-		return entryDictionaries?.flatMap { Entry(dictionary: $0) } ?? []
-	}
-	
+    static let shared = EntryController()
+    
+    init() {
+        loadFromPersistentStorage()
+    }
+    
 	func add(entry: Entry) {
+        entries.append(entry)
+        saveToPersistentStorage()
+	}
+    
+    func remove(entry: Entry) {
+	
+        if let entryIndex = entries.index(of: entry) {
+            entries.remove(at: entryIndex)
+        }
 		
-		var scratch = self.entries
-		scratch.append(entry)		
-		saveToPersistentStorage(newEntries: scratch)
+        saveToPersistentStorage()
 	}
 	
-	func remove(entry: Entry) {
+    func update(entry: Entry, with title: String, text: String) {
 		
-		var scratch = self.entries
-		if let index = scratch.index(of: entry) {
-			scratch.remove(at: index)
+        entry.title = title
+        entry.text = text
+        saveToPersistentStorage()
 		}
-		saveToPersistentStorage(newEntries: scratch)
+	
+	// MARK: - Persistence
+    
+    private func fileURL() -> URL {
+        
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileName = "journal.json"
+        let documentsDirectoryURL = urls[0].appendingPathComponent(fileName)
+        return documentsDirectoryURL
 	}
 	
-	func saveToPersistentStorage(newEntries: [Entry]) {
+    private func loadFromPersistentStorage() {
+        
+		let decoder = JSONDecoder()
+        do {
+            let data = try Data(contentsOf: fileURL())
+            let entries = try decoder.decode([Entry].self, from: data)
+            self.entries = entries
+        } catch let error {
+            print("There was an error saving to persistent storage: \(error)")
+        }
+    }
 		
-		let entryDictionaries = newEntries.map { $0.dictionaryRepresentation() }
+    private func saveToPersistentStorage() {
 		
-		UserDefaults.standard.set(entryDictionaries, forKey: EntryController.EntriesKey)
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(entries)
+            try data.write(to: fileURL())
+        } catch let error {
+            print("There was an error saving to persistent storage: \(error)")
+        }
 	}
 	
+	// MARK: Properties
+	
+	private(set) var entries = [Entry]()
 }
