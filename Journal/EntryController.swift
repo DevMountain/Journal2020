@@ -13,53 +13,46 @@ class EntryController {
 	static let shared = EntryController()
 	
 	init() {
-		loadFromPersistentStorage()
+		if entries.count == 0 {
+			// Create dummy data
+			saveToPersistentStorage(entries: dummyEntries(count: 50_000))
+		}
 	}
 	
 	func add(entry: Entry) {
+		var entries = self.entries
 		entries.append(entry)
-		saveToPersistentStorage()
+		saveToPersistentStorage(entries: entries)
 	}
 	
 	func remove(entry: Entry) {
 		
+		var entries = self.entries
 		if let entryIndex = entries.index(of: entry) {
 			entries.remove(at: entryIndex)
 		}
 		
-		saveToPersistentStorage()
+		saveToPersistentStorage(entries: entries)
 	}
 	
 	func update(entry: Entry, with title: String, text: String) {
 		
+		remove(entry: entry)
 		entry.title = title
 		entry.text = text
-		saveToPersistentStorage()
+		add(entry: entry)
 	}
 	
 	// MARK: - Persistence
 	
 	private func fileURL() -> URL {
-		
 		let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 		let fileName = "journal.json"
 		let documentsDirectoryURL = urls[0].appendingPathComponent(fileName)
 		return documentsDirectoryURL
 	}
 	
-	private func loadFromPersistentStorage() {
-		
-		let decoder = JSONDecoder()
-		do {
-			let data = try Data(contentsOf: fileURL())
-			let entries = try decoder.decode([Entry].self, from: data)
-			self.entries = entries
-		} catch let error {
-			print("There was an error saving to persistent storage: \(error)")
-		}
-	}
-	
-	private func saveToPersistentStorage() {
+	private func saveToPersistentStorage(entries: [Entry]) {
 		
 		let encoder = JSONEncoder()
 		do {
@@ -72,5 +65,13 @@ class EntryController {
 	
 	// MARK: Properties
 	
-	private(set) var entries = [Entry]()
+	var entries: [Entry] {
+		do {
+			let data = try Data(contentsOf: fileURL())
+			return try JSONDecoder().decode([Entry].self, from: data)
+		} catch let error {
+			NSLog("There was an error saving to persistent storage: \(error)")
+			return []
+		}
+	}
 }

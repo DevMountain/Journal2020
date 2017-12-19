@@ -29,12 +29,18 @@ extension Date {
 	}
 }
 
-func addDummyEntries(numberOfEntries: Int) {
+func dummyEntries(count: Int) -> [Entry] {
 	let now = Date()
-	for _ in 0..<numberOfEntries {
+	var result = [Entry]()
+	for _ in 0..<count {
 		let title = loremIpsum.randomWord + " " + loremIpsum.randomWord
 		let timestamp = Date.randomDateBefore(date: now)
 		let entry = Entry(timestamp: timestamp, title: title, text: loremIpsum)
-		EntryController.shared.add(entry: entry)
+		result.append(entry)
 	}
+	return result
+}
+
+func addDummyEntries(numberOfEntries: Int) {
+	
 }
