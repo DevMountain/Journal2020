@@ -147,6 +147,10 @@ return documentsDirectoryURL
 4. You will also need to call `data.write(to: URL)` This function asks for a URL. We can pass in the `fileURL()` as an argument. This is the line of code that will actually write the data at the URL. *Hint - This  is also a throwing function.*
 2. Call `saveToPersistentStorage()` any time that the list of entries is modified
 
+#### Quick lesson on local urls 
+This screenshot shows you how local urls work. URLS are not just web based. On your computer you have local file urls. Open your finder and right click to "get info". When you do that it will show "where" your folder is located on your machine. iCloud Drive / Desktop / Dev Mountain Bank / ect... Local files are seperated by components which are forward-slashes. Images are extentions, such as .jpg 
+<img width="1676" alt="screen shot 2018-10-01 at 11 03 26 am" src="https://user-images.githubusercontent.com/23179585/46303711-d7f20300-c569-11e8-979a-d5b777e371ea.png">
+
 ##### Loading data from the URL
 1. Write a method called `loadFromPersistentStorage()` that will load the current data from the file on disk where we saved our entries(data). Implement this function to:
 1. Create an instance of `JSONDecoder`
