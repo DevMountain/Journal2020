@@ -148,7 +148,7 @@ return documentsDirectoryURL
 2. Call `saveToPersistentStorage()` any time that the list of entries is modified
 
 #### Quick lesson on local urls 
-This screenshot shows you how local urls work. URLS are not just web based. On your computer you have local file urls. Open your finder and right click to "get info". When you do that it will show "where" your folder is located on your machine. iCloud Drive / Desktop / Dev Mountain Bank / ect... Local files are seperated by components which are forward-slashes. Extentions are (.). Images are a good example such as .jpg or .png
+This screenshot shows you how local urls work. URLS are not just web based. On your computer you have local file urls. Open your finder and right click to "get info". When you do that it will show "where" your folder is located on your machine. iCloud Drive / Desktop / Dev Mountain Bank / ect... Local files are seperated by components which are forward-slashes. Extentions are . (dots). Images are a good example of extentions such as .jpg or .png
 <img width="1676" alt="screen shot 2018-10-01 at 11 03 26 am" src="https://user-images.githubusercontent.com/23179585/46303711-d7f20300-c569-11e8-979a-d5b777e371ea.png">
 
 ##### Loading data from the URL
