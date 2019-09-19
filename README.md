@@ -63,8 +63,6 @@ Implement the Equatable protocol for the Entry class. The Equatable protocol all
 1. Add the Equatable protocol function to the top or bottom of your `Entry.swift` file
 2. Return the result of a comparison between the `lhs` and `rhs` parameters using ObjectIdentifier() or checking the property values on each parameter
 
-## Part Two - User Interface
-
 ### Master List View
 
 Build a view that lists all journal entries. You will use a UITableViewController and implement the UITableViewDataSource functions.
@@ -120,7 +118,7 @@ You will add two separate segues from the List View to the Detail View. The segu
 Please See: https://developer.apple.com/documentation/uikit/uitableviewdelegate/1614869-tableview?language=objc
 
 
-## Part Three - Controller Implementation
+## Part Two - Controller Implementation
 
 You will use the Codable protocol to add basic data persistence to the Journal app. Once your model objects you want to save are encoded into Data, you will save this data to a local file on disk. To access this file you will need a URL pointing it.
 
