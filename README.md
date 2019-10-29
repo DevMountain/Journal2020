@@ -77,7 +77,7 @@ You will want this view to reload the table view each time it appears in order t
 * Pay attention to your `reuseIdentifier` in the Storyboard scene and your `dequeueReusableCell(withIdentifier:for:)` function call
 4. Set up your cells to display the title of the entry
 5. Implement the UITableViewDataSource `tableView(_:commit:forRowAt:)` function to enable swipe to delete functionality
-6. Add a UIBarButtonItem to the UINavigationBar with the plus symbol
+6. Add a UIBarButtonItem to the UINavigationBar.
 * Select 'Add' in the System Item menu from the Identity Inspector to set the button as a plus symbol, these are system bar button items, and include localization and other benefits
 
 ### Detail View
