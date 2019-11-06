@@ -15,9 +15,6 @@ Students who complete this project independently are able to:
 * Understand, create, and use a shared instance
 * Create a model object controller with create, read, update, and delete functions
 * Implement the Equatable protocol
-
-### Part Two - User Interface
-
 * Implement a master-detail interface
 * Implement the `UITableViewDataSource` protocol
 * Understand and implement the `UITextFieldDelegate` protocol to dismiss the keyboard
@@ -25,7 +22,7 @@ Students who complete this project independently are able to:
 * Understand, use, and implement the 'updateViews' pattern
 * Implement 'prepare(for segue: UIStoryboardSegue, sender: Any?)' to configure destination view controllers
 
-### Part Three - Controller Implementation
+### Part Two - Controller Implementation
 
 * Add data persistence using the Codable protocol and write data to a local file path (URL).
 * Upon launch, decode the data returned from the local file path (URL) back into our custom model objects.
