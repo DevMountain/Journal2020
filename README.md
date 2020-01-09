@@ -55,10 +55,10 @@ Create a model object controller called `EntryController` that will manage addin
 
 ### Equatable Protocol
 
-Implement the Equatable protocol for the Entry class. The Equatable protocol allows you to check for equality between two variables of a specific class. You may use the ObjectIdentifier() function on class types, but you may decide to manually check the values of the title, text, and timestamp properties.
+Implement the Equatable protocol for the Entry class. The Equatable protocol allows you to check for equality between two variables of a specific class. To ensure that the two objects we are comparing when using this protocol, you will need to manually check the values of all of our variables: the title, text, and timestamp properties. 
 
 1. Add the Equatable protocol function to the top or bottom of your `Entry.swift` file
-2. Return the result of a comparison between the `lhs` and `rhs` parameters using ObjectIdentifier() or checking the property values on each parameter
+2. Return the result of the comparison between the 'lhs' and 'rhs' paramenters by checking the property values on each parameter.
 
 ### Master List View
 
