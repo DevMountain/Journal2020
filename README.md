@@ -99,8 +99,7 @@ Your Detail View should follow the 'updateViews' pattern for updating the view e
 
 You will add two separate segues from the List View to the Detail View. The segue from the plus button will tell the EntryDetailViewController that it should create a new entry. The segue from a selected cell will tell the EntryDetailViewController that it should display a previously created entry, and save any changes to the same.
 
-1. Add a 'show' segue from the Add button to the EntryDetailViewController scene and give the segue an identifier
-(*When naming the identifier, consider that this segue will be used to add an entry*)
+1. Add a 'show' segue from the Add button to the EntryDetailViewController scene. This segue will not need an identifier since we will not be passing information using this segue. 
 2. Add a 'show' segue from the table view cell to the EntryDetailViewController scene and give the segue an identifier
 (*When naming the identifier, consider that this segue will be used to edit an entry*)
 3. Add a `prepare(for segue: UIStoryboardSegue, sender: Any?)` function to the EntryListTableViewController
