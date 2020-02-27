@@ -1,9 +1,9 @@
 //
 //  SceneDelegate.swift
-//  Journal
+//  Journel in 10 min
 //
-//  Created by Marcus Armstrong on 12/1/19.
-//  Copyright © 2019 Marcus Armstrong. All rights reserved.
+//  Created by Trevor Walker on 2/27/20.
+//  Copyright © 2020 Trevor Walker. All rights reserved.
 //
 
 import UIKit
