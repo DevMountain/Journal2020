@@ -46,7 +46,7 @@
 		3EBA779B24081DB000A50219 = {
 			isa = PBXGroup;
 			children = (
-				3EBA77A624081DB000A50219 /* Journel in 10 min */,
+				3EBA77A624081DB000A50219 /* Journal */,
 				3EBA77A524081DB000A50219 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,7 +59,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3EBA77A624081DB000A50219 /* Journel in 10 min */ = {
+		3EBA77A624081DB000A50219 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
 				3EBA77C224081ECE00A50219 /* Views */,
@@ -68,7 +68,7 @@
 				3EBA77BB24081DBC00A50219 /* Resources */,
 				3EBA77AD24081DB000A50219 /* Main.storyboard */,
 			);
-			path = "Journel in 10 min";
+			path = Journal;
 			sourceTree = "<group>";
 		};
 		3EBA77BB24081DBC00A50219 /* Resources */ = {
@@ -143,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3EBA779F24081DB000A50219 /* Build configuration list for PBXProject "Journel in 10 min" */;
+			buildConfigurationList = 3EBA779F24081DB000A50219 /* Build configuration list for PBXProject "Journal" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -330,12 +330,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCL5625TDG;
-				INFOPLIST_FILE = "Journel in 10 min/Resources/Info.plist";
+				INFOPLIST_FILE = Journal/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.TrevorWalker.Journel-in-10-min";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TrevorWalker.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,12 +348,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCL5625TDG;
-				INFOPLIST_FILE = "Journel in 10 min/Resources/Info.plist";
+				INFOPLIST_FILE = Journal/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.TrevorWalker.Journel-in-10-min";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TrevorWalker.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -363,7 +363,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3EBA779F24081DB000A50219 /* Build configuration list for PBXProject "Journel in 10 min" */ = {
+		3EBA779F24081DB000A50219 /* Build configuration list for PBXProject "Journal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EBA77B624081DB300A50219 /* Debug */,

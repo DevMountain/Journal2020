@@ -1,6 +1,6 @@
 //
 //  EntryController.swift
-//  Journel in 10 min
+//  Journal in 10 min
 //
 //  Created by Trevor Walker on 2/27/20.
 //  Copyright © 2020 Trevor Walker. All rights reserved.
