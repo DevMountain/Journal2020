@@ -44,7 +44,7 @@ Create a model object controller called `EntryController` that will manage addin
 
 1. Add a new `EntryController.swift` file and define a new `EntryController` class inside.
 2. Add an entries array property, and set its value to an empty array
-3. Create a `addEntryWith(title: ...)` function that takes in a `title`, and `text`. It should creates a new of `Entry` and add it to the entries array
+3. Create a `addEntryWith(title: ...)` function that takes in a `title`, and `text`. It should create a new of `Entry` and add it to the entries array
 4. Create a `remove(entry: Entry)` function that removes the entry from the entries array
 * There is no 'removeObject' function on arrays. You will need to find the index of the object and then remove the object at that index.
 * You will face a compiler error because we have not given the Entry class a way to find equal objects. You will resolve the error by implementing the Equatable protocol in the next step.
