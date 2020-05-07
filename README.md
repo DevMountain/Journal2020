@@ -58,7 +58,7 @@ Create a model object controller called `EntryController` that will manage addin
 Implement the Equatable protocol for the Entry class. The Equatable protocol allows you to check for equality between two variables of a specific class. To ensure that the two objects we are comparing when using this protocol, you will need to manually check the values of all of our variables: the title, text, and timestamp properties. 
 
 1. Add the Equatable protocol function to the top or bottom of your `Entry.swift` file
-2. Return the result of the comparison between the 'lhs' and 'rhs' paramenters by checking the property values on each parameter.
+2. Return the result of the comparison between the 'lhs' and 'rhs' parameters by checking the property values on each parameter.
 
 ### Master List View
 
@@ -142,7 +142,7 @@ return documentsDirectoryURL
 2. Call `saveToPersistentStorage()` any time that the list of entries is modified
 
 #### Quick lesson on local urls 
-This screenshot shows you how local urls work. URLS are not just web based. On your computer you have local file urls. Open your finder and right click to "get info". When you do that it will show "where" your folder is located on your machine. iCloud Drive / Desktop / Dev Mountain Bank / ect... Local files are seperated by components which are forward-slashes. Extentions are . (dots). Images are a good example of extentions such as .jpg or .png
+This screenshot shows you how local URLs work. URLs are not just web-based. On your computer, you have local file URLs. Open your finder and right-click to "get info". When you do that it will show "where" your folder is located on your machine. iCloud Drive / Desktop / Dev Mountain Bank / ect... Local files are separated by components which are forward-slashes. Extensions are . (dots). Images are a good example of extensions such as .jpg or .png
 <img width="1676" alt="screen shot 2018-10-01 at 11 03 26 am" src="https://user-images.githubusercontent.com/23179585/46303711-d7f20300-c569-11e8-979a-d5b777e371ea.png">
 
 ##### Loading data from the URL
@@ -169,4 +169,5 @@ Please refer to CONTRIBUTING.md.
 ## Copyright
 
 © DevMountain LLC, 2015. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
 
