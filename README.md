@@ -116,7 +116,7 @@ Please See: https://developer.apple.com/documentation/uikit/uitableviewdelegate/
 
 ## Part Two - Controller Implementation
 
-You will use the Codable protocol to add basic data persistence to the Journal app. Once your model objects you want to save are encoded into Data, you will save this data to a local file on disk. To access this file you will need a URL pointing it.
+You will use the Codable protocol to add basic data persistence to the Journal app. Once your model objects are encoded into Data, you will save this data to a local file on disk. To access this file you will need a URL pointing it. This is a file URL not a Web URL. It is similar to those you will see in Finder  ex: path (User/Desktop/Projects/MyProject/myData.json)
 
 ### Add Data Persistence functionality to the EntryController
 
@@ -136,10 +136,10 @@ return documentsDirectoryURL
 ##### Saving data to the URL
 1. Write a method called `saveToPersistentStorage()` that will save the current entries array to a file on disk. Implement this function to:
 1. Create an instance of `JSONEncoder`
-2. Call `encode(value: Encodable) throws` on your instance of the JSONEncoder, passing in the array of entries as an argument. You will need to assign the return of this function to a constant named `data`. _**NOTE - The objects in the array need to be `Codable` objects.** You need to go back to your Entry class and adopt the Codable protocol._  Please see Encoding & Decoding Custom Types:  https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types
+2. Call `encode(value: Encodable) throws` on your instance of the JSONEncoder, passing in the array of entries as the Encodable argument. You will need to assign the return of this function to a constant named `data`. _**NOTE - The objects in the array need to be `Codable` objects.** You need to go back to your Entry class and adopt the Codable protocol._  Please see Encoding & Decoding Custom Types:  https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types or reference the guided lecture from this morning.
 3. You will also notice that this function throws. That means that if you call this function and it doesn't work the way it should, it will _`throw`_ an error. Functions that throw need to be marked with `try` in front of the function call. You will also need to put this call inside of a **do catch block** and `catch` the error that might be thrown. _Review the documentation if you need to learn about do catch blocks._
-4. You will also need to call `data.write(to: URL)` This function asks for a URL. We can pass in the `fileURL()` as an argument. This is the line of code that will actually write the data at the URL. *Hint - This  is also a throwing function.*
-2. Call `saveToPersistentStorage()` any time that the list of entries is modified
+4. You will also need to call `data.write(to: URL)` This function asks for a URL. We can pass in the `fileURL()` as an argument. This is the line of code that will actually write the data at the URL. *Hint - This is also a throwing function.*
+2. Call `saveToPersistentStorage()` any time that the list of entries is modified (CRUD functions)
 
 #### Quick lesson on local urls 
 This screenshot shows you how local URLs work. URLs are not just web-based. On your computer, you have local file URLs. Open your finder and right-click to "get info". When you do that it will show "where" your folder is located on your machine. iCloud Drive / Desktop / Dev Mountain Bank / ect... Local files are separated by components which are forward-slashes. Extensions are . (dots). Images are a good example of extensions such as .jpg or .png
