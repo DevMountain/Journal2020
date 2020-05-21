@@ -44,7 +44,7 @@ Create a model object controller called `EntryController` that will manage addin
 
 1. Add a new `EntryController.swift` file and define a new `EntryController` class inside.
 2. Add an entries array property, and set its value to an empty array
-3. Create a `addEntryWith(title: ...)` function that takes in a `title`, and `text`. It should create a new of `Entry` and add it to the entries array
+3. Create a `addEntryWith(title: ...)` function that takes in a `title`, and `text`. It should create a new instance of `Entry` and add it to the entries array
 4. Create a `remove(entry: Entry)` function that removes the entry from the entries array
 * There is no 'removeObject' function on arrays. You will need to find the index of the object and then remove the object at that index.
 * You will face a compiler error because we have not given the Entry class a way to find equal objects. You will resolve the error by implementing the Equatable protocol in the next step.
@@ -55,9 +55,9 @@ Create a model object controller called `EntryController` that will manage addin
 
 ### Equatable Protocol
 
-Implement the Equatable protocol for the Entry class. The Equatable protocol allows you to check for equality between two variables of a specific class. To ensure that the two objects we are comparing when using this protocol, you will need to manually check the values of all of our variables: the title, text, and timestamp properties. 
+Implement the Equatable protocol for the Entry class. The Equatable protocol allows you to check for equality between two variables of a specific class. To ensure that the two objects we are comparing when using this protocol are the same, you will need to manually check the values of all of our variables: the title, text, and timestamp properties. 
 
-1. Add the Equatable protocol function to the top or bottom of your `Entry.swift` file
+1. Add the Equatable protocol function in an extension to the bottom of your `Entry.swift` file
 2. Return the result of the comparison between the 'lhs' and 'rhs' parameters by checking the property values on each parameter.
 
 ### Master List View
