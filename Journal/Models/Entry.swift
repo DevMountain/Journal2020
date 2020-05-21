@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Entry {
+class Entry: Codable {
     // MARK: - Properties
     var title: String
     var details: String
