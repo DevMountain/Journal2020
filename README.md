@@ -103,10 +103,9 @@ You will add two separate segues from the List View to the Detail View. The segu
 2. Add a 'show' segue from the table view cell to the EntryDetailViewController scene and give the segue an identifier
 (*When naming the identifier, consider that this segue will be used to edit an entry*)
 3. Add a `prepare(for segue: UIStoryboardSegue, sender: Any?)` function to the EntryListTableViewController
-4. Implement the `prepare(for segue: UIStoryboardSegue, sender: Any?)` function. If the identifier is 'toShowEntry' we will pass the selected entry to the DetailViewController, which will call our `updateViews()` function
+4. Implement the `prepare(for segue: UIStoryboardSegue, sender: Any?)` function. If the identifier is 'showEntry' we will pass the selected entry to the DetailViewController, which will call our `updateViews()` function
 * You will need to capture the selected entry by using the indexPath of the selected cell
 * Remember that the `updateViews()` function will update the destination view controller with the entry details
-* Since we aren't passing an entry if the identifier is 'toAddEntry' we don't need to account for this in our `prepare(for segue: UIStoryboardSegue, sender: Any?)`
 
 ### Black Diamonds
 
