@@ -142,7 +142,7 @@ _ If you need to learn about doing catch blocks, review the documentation._
 2. Call `saveToPersistentStorage()` any time that the list of entries is modified (CRUD functions)
 
 #### Quick lesson on local urls 
-This screenshot shows how local URLs work. URLs are not just web-based. On the computer, there are local file URLs. Open the finder and right-click to "get info". When done, it will show the location of the folder on the local machine. For example, iCloud Drive / Desktop / Dev Mountain Bank / etc. 
+The screenshot below shows how local URLs work. URLs are not just web-based. On the computer, there are local file URLs. Open the finder and right-click to "get info". When done, it will show the location of the folder on the local machine. For example, iCloud Drive / Desktop / Dev Mountain Bank / etc. 
 Local files are separated by components which are forward-slashes. Extensions are . (dots). Images are a good example of extensions such as .jpg or .png
 <img width="1676" alt="screen shot 2018-10-01 at 11 03 26 am" src="https://user-images.githubusercontent.com/23179585/46303711-d7f20300-c569-11e8-979a-d5b777e371ea.png">
 
